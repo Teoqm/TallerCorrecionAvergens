@@ -9,17 +9,17 @@ import notificaciones.TelegramNotifier;
  * Clase encargada de gestionar la asignación de misiones
  * a los diferentes héroes del sistema.
  * <p>
- * Esta clase aplica polimorfismo al permitir que cualquier
- * implementación de {@link IMision} sea ejecutada por un
- * objeto de tipo {@link Heroe}.
+ * Aplica polimorfismo permitiendo que cualquier implementación
+ * de {@link IMision} sea ejecutada por un objeto de tipo {@link Heroe}.
  * </p>
  * <p>
  * También centraliza el manejo de excepciones relacionadas
- * con la incompatibilidad entre héroes y misiones.
+ * con la incompatibilidad entre héroes y misiones e integra
+ * un sistema de notificación mediante {@link TelegramNotifier}.
  * </p>
  *
  * @author Juan Jose Morales
- * @version 1.0
+ * @version 2.0
  */
 public class SistemaAsignacion {
 

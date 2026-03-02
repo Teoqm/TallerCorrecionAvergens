@@ -1,67 +1,61 @@
 package misiones;
 
 import excepciones.HeroeIncompatibleException;
-import habilidades.Iacuatica;
+import habilidades.IAcuatica;
 import heroes.Heroe;
 import notificaciones.TelegramNotifier;
 
 /**
- * Clase que representa una misión que requiere la habilidad
- * acuática para poder ser ejecutada.
+ * Representa una misión que requiere la habilidad acuática.
  * <p>
- * Implementa la interfaz {@code IMision} y valida si el héroe
- * proporcionado posee la habilidad {@code Iacuatica}.
- * Si el héroe no implementa dicha interfaz, se lanza una
- * {@code HeroeIncompatibleException}.
+ * Esta clase valida si el héroe asignado implementa la interfaz
+ * {@link IAcuatica}. En caso contrario, se envía una notificación
+ * y se lanza una {@link HeroeIncompatibleException}.
+ * </p>
+ * <p>
+ * Integra un sistema de notificación mediante {@link TelegramNotifier}
+ * para informar el resultado de la ejecución de la misión.
  * </p>
  *
  * @author Juan Jose Morales
- * @version 1.0
+ * @version 2.0
  */
 public class MisionAcuatica implements IMision {
 
-    TelegramNotifier notifier = new TelegramNotifier();
     /**
-     * Ejecuta la misión acuática con el héroe recibido.
-     * <p>
-     * Se verifica si el héroe implementa la interfaz {@code Iacuatica}.
-     * En caso contrario, se genera una excepción indicando que el héroe
-     * es incompatible con la misión.
-     * </p>
+     * Servicio de notificación utilizado para informar
+     * el estado de la misión.
+     */
+    private TelegramNotifier notifier = new TelegramNotifier();
+
+    /**
+     * Ejecuta la misión acuática con el héroe proporcionado.
      *
-     * @param heroe Héroe que intentará ejecutar la misión
+     * @param heroe héroe que intentará ejecutar la misión
      * @throws HeroeIncompatibleException
-     *         Se lanza cuando el héroe no posee la habilidad acuática
+     *         si el héroe no implementa {@link IAcuatica}
      */
     @Override
     public void ejecutar(Heroe heroe)
             throws HeroeIncompatibleException {
 
-        // Verifica si el héroe NO tiene la habilidad acuática
-        if (!(heroe instanceof Iacuatica)) {
+        // Verifica si el héroe NO tiene la habilidad requerida
+        if (!(heroe instanceof IAcuatica)) {
 
+            String mensaje = heroe.getNombre()
+                    + " Heroe incompatible con mision acuatica";
 
-            notifier.enviarMensaje(heroe.getNombre() + " Heroe incompatible con mision acuatica\n");
+            notifier.enviarMensaje(mensaje);
 
-            // Lanza excepción por incompatibilidad
-            throw new HeroeIncompatibleException(
-                    heroe.getNombre() + " Heroe incompatible con mision acuatica\n");
-
+            throw new HeroeIncompatibleException(mensaje);
         }
 
-
-
         // Si el héroe posee la habilidad, ejecuta la acción
-        System.out.println(
+        String mensajeExito = heroe.getNombre()
+                + " es acuatico";
 
+        System.out.println(mensajeExito);
 
-                heroe.getNombre()
-                        + " es acuatico");
-
-
-        notifier.enviarMensaje(
-
-                heroe.getNombre()
-                        + " es acuatico");
+        notifier.enviarMensaje(mensajeExito);
     }
 }

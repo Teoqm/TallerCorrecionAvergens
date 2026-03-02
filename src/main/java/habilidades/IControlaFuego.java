@@ -16,7 +16,7 @@ package habilidades;
  * @author Mateo Quintero
  * @version 1.0
  */
-public interface IcontrolaFuego {
+public interface IControlaFuego {
 
     /**
      * Ejecuta la acción de controlar fuego.

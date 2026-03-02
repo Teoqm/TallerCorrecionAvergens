@@ -15,7 +15,7 @@ package habilidades;
  * @author Mateo Quintero
  * @version 1.0
  */
-public interface Ivolar {
+public interface IVolar {
 
     /**
      * Ejecuta la acción de volar.

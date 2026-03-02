@@ -15,7 +15,7 @@ package habilidades;
  * @author Mateo Quintero
  * @version 1.0
  */
-public interface ItreparMuros {
+public interface ITreparMuros {
 
     /**
      * Ejecuta la acción de trepar muros.

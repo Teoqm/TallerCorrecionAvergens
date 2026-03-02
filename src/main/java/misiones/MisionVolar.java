@@ -1,7 +1,7 @@
 package misiones;
 
 import excepciones.HeroeIncompatibleException;
-import habilidades.Ivolar;
+import habilidades.IVolar;
 import heroes.Heroe;
 import notificaciones.TelegramNotifier;
 
@@ -10,7 +10,7 @@ import notificaciones.TelegramNotifier;
  *
  * <p>
  * Esta misión solo puede ser ejecutada por héroes que implementen
- * la interfaz {@link Ivolar}.
+ * la interfaz {@link IVolar}.
  * </p>
  *
  * <p>
@@ -41,7 +41,7 @@ public class MisionVolar implements IMision {
     public void ejecutar(Heroe heroe)
             throws HeroeIncompatibleException {
 
-        if (!(heroe instanceof Ivolar)) {
+        if (!(heroe instanceof IVolar)) {
 
             notifier.enviarMensaje(
                     heroe.getNombre()

@@ -1,65 +1,61 @@
 package misiones;
 
 import excepciones.HeroeIncompatibleException;
-import habilidades.IcontrolaFuego;
+import habilidades.IControlaFuego;
 import heroes.Heroe;
 import notificaciones.TelegramNotifier;
 
 /**
- * Clase que representa una misión que requiere la habilidad
- * de controlar fuego para poder ser ejecutada.
+ * Representa una misión que requiere la habilidad de controlar fuego.
  * <p>
- * Implementa la interfaz {@code IMision} y valida si el héroe
- * proporcionado posee la habilidad {@code IcontrolaFuego}.
- * Si el héroe no implementa dicha interfaz, se lanza una
- * {@code HeroeIncompatibleException}.
+ * Esta clase valida si el héroe asignado implementa la interfaz
+ * {@link IControlaFuego}. En caso contrario, se envía una notificación
+ * y se lanza una {@link HeroeIncompatibleException}.
+ * </p>
+ * <p>
+ * Integra un sistema de notificación mediante {@link TelegramNotifier}
+ * para informar el resultado de la ejecución de la misión.
  * </p>
  *
  * @author Juan Jose Morales
- * @version 1.0
+ * @version 2.0
  */
 public class MisionControlaFuego implements IMision {
-    TelegramNotifier notifier = new TelegramNotifier();
+
     /**
-     * Ejecuta la misión de controlar fuego con el héroe recibido.
-     * <p>
-     * Se verifica si el héroe implementa la interfaz {@code IcontrolaFuego}.
-     * En caso de no cumplir con esta condición, se genera una excepción
-     * indicando que el héroe es incompatible con la misión.
-     * </p>
+     * Servicio de notificación utilizado para informar
+     * el estado de la misión.
+     */
+    private TelegramNotifier notifier = new TelegramNotifier();
+
+    /**
+     * Ejecuta la misión de controlar fuego con el héroe proporcionado.
      *
-     * @param heroe Héroe que intentará ejecutar la misión
+     * @param heroe héroe que intentará ejecutar la misión
      * @throws HeroeIncompatibleException
-     *         Se lanza cuando el héroe no posee la habilidad de controlar fuego
+     *         si el héroe no implementa {@link IControlaFuego}
      */
     @Override
     public void ejecutar(Heroe heroe)
             throws HeroeIncompatibleException {
 
-        // Verifica si el héroe NO tiene la habilidad de controlar fuego
-        if (!(heroe instanceof IcontrolaFuego)) {
+        // Verifica si el héroe NO tiene la habilidad requerida
+        if (!(heroe instanceof IControlaFuego)) {
 
-            // Lanza excepción por incompatibilidad
+            String mensaje = heroe.getNombre()
+                    + " Heroe incompatible con mision de controlar fuego";
 
+            notifier.enviarMensaje(mensaje);
 
-            notifier.enviarMensaje(heroe.getNombre() + " Heroe incompatible con mision de controlar fuego\n");
-
-            throw new HeroeIncompatibleException(
-                    heroe.getNombre() + " Heroe incompatible con mision de controlar fuego\n");
+            throw new HeroeIncompatibleException(mensaje);
         }
 
         // Si el héroe posee la habilidad, ejecuta la acción
-        System.out.println(
-                heroe.getNombre()
-                        + " controla el fuego");
+        String mensajeExito = heroe.getNombre()
+                + " controla el fuego";
 
-        notifier.enviarMensaje(heroe.getNombre()
-                + " controla el fuego");
+        System.out.println(mensajeExito);
 
-
-
-
-
-
+        notifier.enviarMensaje(mensajeExito);
     }
 }

@@ -16,7 +16,7 @@ package habilidades;
  * @author Mateo Quintero
  * @version 1.0
  */
-public interface Isigilo {
+public interface ISigilo {
 
     /**
      * Ejecuta la acción de sigilo.

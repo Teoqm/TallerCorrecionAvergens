@@ -1,6 +1,6 @@
 package heroes;
 
-import habilidades.Ivolar;
+import habilidades.IVolar;
 
 /**
  * Clase que representa al héroe Thor.
@@ -16,7 +16,7 @@ import habilidades.Ivolar;
  * @author Mateo Quintero
  * @version 1.0
  */
-public class Thor extends Heroe implements Ivolar {
+public class Thor extends Heroe implements IVolar {
 
     /**
      * Constructor que crea un nuevo héroe Thor con un nombre específico.

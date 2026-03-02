@@ -1,61 +1,66 @@
 package misiones;
 
 import heroes.Heroe;
-import habilidades.ItreparMuros;
+import habilidades.ITreparMuros;
 import excepciones.HeroeIncompatibleException;
 import notificaciones.TelegramNotifier;
 
 /**
- * Clase que representa una misión en la cual el héroe
- * debe poseer la habilidad de trepar muros para poder ejecutarla.
+ * Representa una misión que requiere la habilidad de trepar muros.
  * <p>
- * Implementa la interfaz {@code IMision} y valida si el héroe
- * recibido implementa la interfaz {@code ItreparMuros}.
- * Si el héroe no posee dicha habilidad, se lanza una
- * {@code HeroeIncompatibleException}.
+ * Esta clase valida si el héroe asignado implementa la interfaz
+ * {@link ITreparMuros}. En caso contrario, se lanza una
+ * {@link HeroeIncompatibleException}.
+ * </p>
+ * <p>
+ * Además, integra un sistema de notificación mediante
+ * {@link TelegramNotifier} para informar el resultado
+ * de la ejecución de la misión.
  * </p>
  *
  * @author Juan Jose Morales
- * @version 1.0
+ * @version 2.0
  */
 public class MisionTreparMuros implements IMision {
 
+    /**
+     * Servicio de notificación utilizado para informar
+     * el estado de la misión.
+     */
+    private TelegramNotifier notifier = new TelegramNotifier();
 
-    TelegramNotifier notifier = new TelegramNotifier();
     /**
      * Ejecuta la misión de trepar muros con el héroe proporcionado.
      * <p>
-     * Se verifica si el héroe implementa la interfaz {@code ItreparMuros}.
-     * Si no la implementa, se genera una excepción indicando que el héroe
-     * no es compatible con esta misión.
+     * Si el héroe no posee la habilidad requerida,
+     * se envía una notificación y se lanza una excepción.
      * </p>
      *
-     * @param heroe Héroe que intentará ejecutar la misión
+     * @param heroe héroe que intentará ejecutar la misión
      * @throws HeroeIncompatibleException
-     *         Se lanza cuando el héroe no tiene la habilidad de trepar muros
+     *         si el héroe no implementa {@link ITreparMuros}
      */
     @Override
     public void ejecutar(Heroe heroe)
             throws HeroeIncompatibleException {
 
-        // Verifica si el héroe NO tiene la habilidad de trepar muros
-        if (!(heroe instanceof ItreparMuros)) {
+        // Verifica si el héroe NO tiene la habilidad requerida
+        if (!(heroe instanceof ITreparMuros)) {
 
+            String mensaje = heroe.getNombre()
+                    + " Heroe incompatible con mision de trepar muros";
 
-            notifier.enviarMensaje(heroe.getNombre() + " Heroe incompatible con mision de trepar muros\n");
+            notifier.enviarMensaje(mensaje);
 
-            // Lanza excepción por incompatibilidad
-            throw new HeroeIncompatibleException(heroe.getNombre() + " Heroe incompatible con mision de trepar muros\n");
+            throw new HeroeIncompatibleException(mensaje);
         }
 
         // Si el héroe tiene la habilidad, ejecuta la acción
-        System.out.println(
-                heroe.getNombre()
-                        + " trepa muros");
+        String mensajeExito = heroe.getNombre()
+                + " trepa muros";
 
-        notifier.enviarMensaje(heroe.getNombre()
-                + " trepa muros");
+        System.out.println(mensajeExito);
 
+        notifier.enviarMensaje(mensajeExito);
     }
-
 }

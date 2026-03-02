@@ -17,7 +17,7 @@ package habilidades;
  * @author Mateo Quintero
  * @version 1.0
  */
-public interface Iacuatica {
+public interface IAcuatica {
 
     /**
      * Ejecuta la acción relacionada con la habilidad acuática.

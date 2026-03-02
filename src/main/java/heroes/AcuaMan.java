@@ -1,6 +1,6 @@
 package heroes;
 
-import habilidades.Iacuatica;
+import habilidades.IAcuatica;
 
 /**
  * Clase que representa al héroe AcuaMan.
@@ -16,7 +16,7 @@ import habilidades.Iacuatica;
  * @author Mateo Quintero
  * @version 1.0
  */
-public class AcuaMan extends Heroe implements Iacuatica {
+public class AcuaMan extends Heroe implements IAcuatica {
 
     /**
      * Constructor que crea un nuevo héroe AcuaMan con un nombre específico.

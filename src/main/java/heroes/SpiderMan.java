@@ -1,6 +1,6 @@
 package heroes;
 
-import habilidades.ItreparMuros;
+import habilidades.ITreparMuros;
 
 /**
  * Clase que representa al héroe SpiderMan.
@@ -16,7 +16,7 @@ import habilidades.ItreparMuros;
  * @author Mateo Quintero
  * @version 1.0
  */
-public class SpiderMan extends Heroe implements ItreparMuros {
+public class SpiderMan extends Heroe implements ITreparMuros {
 
     /**
      * Constructor que crea un nuevo héroe SpiderMan con un nombre específico.

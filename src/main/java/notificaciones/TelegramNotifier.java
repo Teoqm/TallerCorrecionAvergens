@@ -1,118 +1,110 @@
+package notificaciones;
+
+import java.net.URI;
+import java.net.URLEncoder;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+import java.nio.charset.StandardCharsets;
+
+/**
+ * Clase encargada de enviar notificaciones mediante la API de Telegram.
+ * <p>
+ * Utiliza la API oficial de bots de Telegram para enviar mensajes
+ * a un chat específico configurado mediante un BOT_TOKEN y CHAT_ID.
+ * </p>
+ * <p>
+ * Implementa comunicación HTTP utilizando {@link HttpClient}
+ * introducido en Java 11.
+ * </p>
+ *
+ * <p><b>Importante:</b> El token del bot y el chat ID están
+ * configurados como constantes internas.</p>
+ *
+ * @author Juan Jose Morales
+ * @version 1.0
+ */
 public class TelegramNotifier {
 
+    /**
+     * Token de autenticación del bot de Telegram.
+     */
     private static final String BOT_TOKEN = "8696168630:AAGYISxIO22IfQvR2tbwvkgFqtgNq-11-cs";
-    private static final String BASE_URL = "https://api.telegram.org/bot" + BOT_TOKEN;
-
-    private final HttpClient httpClient;
-
-    public TelegramNotifier() {
-        this.httpClient = HttpClient.newHttpClient();
-    }
 
     /**
-     * Envía un mensaje de texto a un chat específico.
-     *
-     * @param chatId  ID del chat o usuario al que se enviará el mensaje
-     * @param message Mensaje a enviar
-     * @return true si el mensaje fue enviado exitosamente, false en caso contrario
+     * Identificador del chat destino.
      */
-    public boolean sendMessage(String chatId, String message) {
+    private static final String CHAT_ID   = "7056005334";
+
+    /**
+     * URL base utilizada para realizar la petición a la API de Telegram.
+     */
+    private static final String BASE_URL  = "https://api.telegram.org/bot" + BOT_TOKEN + "/sendMessage";
+
+    /**
+     * Envía un mensaje de texto plano al chat configurado.
+     *
+     * @param mensaje texto que será enviado al chat
+     * @return {@code true} si el mensaje fue enviado exitosamente,
+     *         {@code false} si ocurrió algún error
+     */
+    public boolean enviarMensaje(String mensaje) {
         try {
-            String encodedMessage = URLEncoder.encode(message, StandardCharsets.UTF_8);
-            String url = BASE_URL + "/sendMessage?chat_id=" + chatId + "&text=" + encodedMessage;
+            String textoEncoded = URLEncoder.encode(mensaje, StandardCharsets.UTF_8);
+            String url = BASE_URL + "?chat_id=" + CHAT_ID + "&text=" + textoEncoded;
+
+            HttpClient client = HttpClient.newHttpClient();
 
             HttpRequest request = HttpRequest.newBuilder()
                     .uri(URI.create(url))
                     .GET()
                     .build();
 
-            HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
+            HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
             if (response.statusCode() == 200) {
-                System.out.println("✅ Mensaje enviado exitosamente a: " + chatId);
+                System.out.println("✅ Mensaje enviado correctamente.");
+                System.out.println("Respuesta: " + response.body());
                 return true;
             } else {
-                System.err.println("❌ Error al enviar mensaje. Código: " + response.statusCode());
-                System.err.println("Respuesta: " + response.body());
+                System.out.println("❌ Error al enviar. Código: " + response.statusCode());
+                System.out.println("Respuesta: " + response.body());
                 return false;
             }
 
-        } catch (IOException | InterruptedException e) {
-            System.err.println("❌ Excepción al enviar mensaje: " + e.getMessage());
-            Thread.currentThread().interrupt();
+        } catch (Exception e) {
+            System.err.println("❌ Excepción: " + e.getMessage());
+            e.printStackTrace();
             return false;
         }
     }
 
     /**
-     * Envía un mensaje con formato HTML.
+     * Envía un mensaje con formato HTML (negrita, cursiva, enlaces, etc.).
      *
-     * @param chatId  ID del chat
-     * @param message Mensaje en formato HTML (ej: "<b>negrita</b>")
-     * @return true si fue exitoso
+     * @param mensaje texto con formato HTML compatible con Telegram
+     * @return {@code true} si el mensaje fue enviado correctamente,
+     *         {@code false} en caso de error
      */
-    public boolean sendHtmlMessage(String chatId, String message) {
+    public boolean enviarMensajeHTML(String mensaje) {
         try {
-            String encodedMessage = URLEncoder.encode(message, StandardCharsets.UTF_8);
-            String url = BASE_URL + "/sendMessage?chat_id=" + chatId
-                    + "&text=" + encodedMessage
+            String textoEncoded = URLEncoder.encode(mensaje, StandardCharsets.UTF_8);
+            String url = BASE_URL + "?chat_id=" + CHAT_ID
+                    + "&text=" + textoEncoded
                     + "&parse_mode=HTML";
 
+            HttpClient client = HttpClient.newHttpClient();
             HttpRequest request = HttpRequest.newBuilder()
                     .uri(URI.create(url))
                     .GET()
                     .build();
 
-            HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
+            HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
             return response.statusCode() == 200;
 
-        } catch (IOException | InterruptedException e) {
-            System.err.println("❌ Excepción: " + e.getMessage());
-            Thread.currentThread().interrupt();
+        } catch (Exception e) {
+            e.printStackTrace();
             return false;
         }
     }
-
-    /**
-     * Obtiene el chatId de los usuarios que han hablado con el bot.
-     * Útil para obtener tu propio chatId la primera vez.
-     */
-    public void getUpdates() {
-        try {
-            String url = BASE_URL + "/getUpdates";
-
-            HttpRequest request = HttpRequest.newBuilder()
-                    .uri(URI.create(url))
-                    .GET()
-                    .build();
-
-            HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
-            System.out.println("📋 Updates del bot:");
-            System.out.println(response.body());
-
-        } catch (IOException | InterruptedException e) {
-            System.err.println("❌ Error: " + e.getMessage());
-            Thread.currentThread().interrupt();
-        }
-    }
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

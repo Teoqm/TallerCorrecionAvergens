@@ -1,6 +1,6 @@
 package heroes;
 
-import habilidades.Isigilo;
+import habilidades.ISigilo;
 
 /**
  * Clase que representa al héroe Superman.
@@ -16,7 +16,7 @@ import habilidades.Isigilo;
  * @author Mateo Quintero
  * @version 1.0
  */
-public class Superman extends Heroe implements Isigilo {
+public class Superman extends Heroe implements ISigilo {
 
     /**
      * Constructor que crea un nuevo héroe Superman con un nombre específico.

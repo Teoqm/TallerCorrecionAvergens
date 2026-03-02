@@ -1,6 +1,6 @@
 package heroes;
 
-import habilidades.IcontrolaFuego;
+import habilidades.IControlaFuego;
 
 /**
  * Clase que representa al héroe IronMan.
@@ -17,7 +17,7 @@ import habilidades.IcontrolaFuego;
  * @author Mateo Quintero
  * @version 1.0
  */
-public class IronMan extends Heroe implements IcontrolaFuego {
+public class IronMan extends Heroe implements IControlaFuego {
 
     /**
      * Constructor que crea un nuevo héroe IronMan con un nombre específico.

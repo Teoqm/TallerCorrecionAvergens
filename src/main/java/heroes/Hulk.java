@@ -1,6 +1,6 @@
 package heroes;
 
-import habilidades.ItreparMuros;
+import habilidades.ITreparMuros;
 
 /**
  * Clase que representa al héroe Hulk.
@@ -17,7 +17,7 @@ import habilidades.ItreparMuros;
  * @author Mateo Quintero
  * @version 1.0
  */
-public class Hulk extends Heroe implements ItreparMuros {
+public class Hulk extends Heroe implements ITreparMuros {
 
     /**
      * Constructor que crea un nuevo héroe Hulk con un nombre específico.
