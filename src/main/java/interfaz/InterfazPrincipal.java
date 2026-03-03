@@ -8,14 +8,13 @@ package interfaz;
  *
  * @author mateo
  */
-public class InterfazPrincipal extends javax.swing.JDialog {
+public class InterfazPrincipal extends javax.swing.JFrame {
 
    /*
     
     Se crea los Jpanel y mas herramientas que ayudan al trabajo 
     */
-    public InterfazPrincipal(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
+    public InterfazPrincipal() {
         initComponents();
     }
 
@@ -29,44 +28,127 @@ public class InterfazPrincipal extends javax.swing.JDialog {
     private void initComponents() {
 
         JP_Principal = new javax.swing.JPanel();
-        JP_LIstaDeHeroes = new javax.swing.JPanel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jLabel2 = new javax.swing.JLabel();
+        JP_ListaDeMisiones = new javax.swing.JPanel();
+        JL_TituloDeMisiones = new javax.swing.JLabel();
+        JL_NombreMision = new javax.swing.JLabel();
+        JL_HabilidadMIsion = new javax.swing.JLabel();
+        JC_Heroes1 = new javax.swing.JComboBox<>();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jTextPane2 = new javax.swing.JTextPane();
+        JB_CrearHeroe1 = new javax.swing.JButton();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        JT_TextoDeHeroes1 = new javax.swing.JTextArea();
         JP_Titulo = new javax.swing.JPanel();
         LA_Texto = new javax.swing.JLabel();
-        jPanel4 = new javax.swing.JPanel();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jLabel1 = new javax.swing.JLabel();
+        JP_Heroes = new javax.swing.JPanel();
+        JC_Heroes = new javax.swing.JComboBox<>();
+        JL_TituloHeroes = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        JT_TextoDeHeroes = new javax.swing.JTextArea();
+        JL_NombreHeroe = new javax.swing.JLabel();
+        JL_Tipo = new javax.swing.JLabel();
+        JB_CrearHeroe = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTextPane1 = new javax.swing.JTextPane();
+        JB_EjcutarMison = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        JP_Principal.setBackground(new java.awt.Color(0, 204, 204));
+        JP_Principal.setBackground(new java.awt.Color(0, 102, 102));
 
-        JP_LIstaDeHeroes.setBackground(new java.awt.Color(102, 102, 102));
+        JP_ListaDeMisiones.setBackground(new java.awt.Color(102, 102, 102));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        JL_TituloDeMisiones.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        JL_TituloDeMisiones.setForeground(new java.awt.Color(255, 255, 255));
+        JL_TituloDeMisiones.setText("Crear Nuevas Misiones");
 
-        jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        jLabel2.setText("Misiones");
+        JL_NombreMision.setBackground(new java.awt.Color(255, 255, 255));
+        JL_NombreMision.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        JL_NombreMision.setForeground(new java.awt.Color(255, 255, 255));
+        JL_NombreMision.setText("Nombre");
 
-        javax.swing.GroupLayout JP_LIstaDeHeroesLayout = new javax.swing.GroupLayout(JP_LIstaDeHeroes);
-        JP_LIstaDeHeroes.setLayout(JP_LIstaDeHeroesLayout);
-        JP_LIstaDeHeroesLayout.setHorizontalGroup(
-            JP_LIstaDeHeroesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(JP_LIstaDeHeroesLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(JP_LIstaDeHeroesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(91, Short.MAX_VALUE))
+        JL_HabilidadMIsion.setBackground(new java.awt.Color(255, 255, 255));
+        JL_HabilidadMIsion.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        JL_HabilidadMIsion.setForeground(new java.awt.Color(255, 255, 255));
+        JL_HabilidadMIsion.setText("Habiliad");
+
+        JC_Heroes1.setBackground(new java.awt.Color(153, 153, 153));
+        JC_Heroes1.setForeground(new java.awt.Color(255, 255, 255));
+        JC_Heroes1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Acuatica", "Control FUego", "Sigilo", "Trepar Muros", "Volar" }));
+        JC_Heroes1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        JC_Heroes1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JC_Heroes1ActionPerformed(evt);
+            }
+        });
+
+        jTextPane2.setBackground(new java.awt.Color(153, 153, 153));
+        jTextPane2.setFont(new java.awt.Font("Traditional Arabic", 1, 18)); // NOI18N
+        jTextPane2.setForeground(new java.awt.Color(255, 255, 255));
+        jScrollPane4.setViewportView(jTextPane2);
+
+        JB_CrearHeroe1.setBackground(new java.awt.Color(153, 153, 153));
+        JB_CrearHeroe1.setForeground(new java.awt.Color(255, 255, 255));
+        JB_CrearHeroe1.setText("Crea Mision");
+        JB_CrearHeroe1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JB_CrearHeroe1ActionPerformed(evt);
+            }
+        });
+
+        JT_TextoDeHeroes1.setBackground(new java.awt.Color(153, 153, 153));
+        JT_TextoDeHeroes1.setColumns(20);
+        JT_TextoDeHeroes1.setForeground(new java.awt.Color(102, 102, 102));
+        JT_TextoDeHeroes1.setRows(5);
+        jScrollPane5.setViewportView(JT_TextoDeHeroes1);
+
+        javax.swing.GroupLayout JP_ListaDeMisionesLayout = new javax.swing.GroupLayout(JP_ListaDeMisiones);
+        JP_ListaDeMisiones.setLayout(JP_ListaDeMisionesLayout);
+        JP_ListaDeMisionesLayout.setHorizontalGroup(
+            JP_ListaDeMisionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JP_ListaDeMisionesLayout.createSequentialGroup()
+                .addGroup(JP_ListaDeMisionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(JP_ListaDeMisionesLayout.createSequentialGroup()
+                        .addGap(0, 26, Short.MAX_VALUE)
+                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, JP_ListaDeMisionesLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(JL_TituloDeMisiones, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, JP_ListaDeMisionesLayout.createSequentialGroup()
+                        .addGap(56, 56, 56)
+                        .addGroup(JP_ListaDeMisionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(JP_ListaDeMisionesLayout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(JL_HabilidadMIsion))
+                            .addComponent(JL_NombreMision))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(JP_ListaDeMisionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jScrollPane4)
+                            .addComponent(JC_Heroes1, 0, 181, Short.MAX_VALUE))))
+                .addGap(31, 31, 31))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JP_ListaDeMisionesLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(JB_CrearHeroe1, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(92, 92, 92))
         );
-        JP_LIstaDeHeroesLayout.setVerticalGroup(
-            JP_LIstaDeHeroesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(JP_LIstaDeHeroesLayout.createSequentialGroup()
+        JP_ListaDeMisionesLayout.setVerticalGroup(
+            JP_ListaDeMisionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(JP_ListaDeMisionesLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2)
+                .addComponent(JL_TituloDeMisiones)
                 .addGap(10, 10, 10)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(JP_ListaDeMisionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(JL_NombreMision)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(JP_ListaDeMisionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(JC_Heroes1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(JL_HabilidadMIsion, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(24, 24, 24)
+                .addComponent(JB_CrearHeroe1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -83,59 +165,142 @@ public class InterfazPrincipal extends javax.swing.JDialog {
         JP_TituloLayout.setHorizontalGroup(
             JP_TituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JP_TituloLayout.createSequentialGroup()
-                .addContainerGap(63, Short.MAX_VALUE)
+                .addContainerGap(50, Short.MAX_VALUE)
                 .addComponent(LA_Texto, javax.swing.GroupLayout.PREFERRED_SIZE, 411, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(57, 57, 57))
+                .addGap(46, 46, 46))
         );
         JP_TituloLayout.setVerticalGroup(
             JP_TituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(JP_TituloLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(LA_Texto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(LA_Texto, javax.swing.GroupLayout.DEFAULT_SIZE, 76, Short.MAX_VALUE)
                 .addGap(15, 15, 15))
         );
 
-        jPanel4.setBackground(new java.awt.Color(102, 102, 102));
+        JP_Heroes.setBackground(new java.awt.Color(102, 102, 102));
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        JC_Heroes.setBackground(new java.awt.Color(153, 153, 153));
+        JC_Heroes.setForeground(new java.awt.Color(255, 255, 255));
+        JC_Heroes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "AcuaMan", "Hulk", "IroMan", "SpiderMan", "Superman", "Thor" }));
+        JC_Heroes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JC_HeroesActionPerformed(evt);
+            }
+        });
 
-        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        jLabel1.setText("Heroes");
+        JL_TituloHeroes.setBackground(new java.awt.Color(255, 255, 255));
+        JL_TituloHeroes.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        JL_TituloHeroes.setForeground(new java.awt.Color(255, 255, 255));
+        JL_TituloHeroes.setText("Crear Nuevos Heroes");
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
+        JT_TextoDeHeroes.setBackground(new java.awt.Color(153, 153, 153));
+        JT_TextoDeHeroes.setColumns(20);
+        JT_TextoDeHeroes.setForeground(new java.awt.Color(102, 102, 102));
+        JT_TextoDeHeroes.setRows(5);
+        jScrollPane1.setViewportView(JT_TextoDeHeroes);
+
+        JL_NombreHeroe.setBackground(new java.awt.Color(255, 255, 255));
+        JL_NombreHeroe.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        JL_NombreHeroe.setForeground(new java.awt.Color(255, 255, 255));
+        JL_NombreHeroe.setText("Nombre");
+
+        JL_Tipo.setBackground(new java.awt.Color(255, 255, 255));
+        JL_Tipo.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        JL_Tipo.setForeground(new java.awt.Color(255, 255, 255));
+        JL_Tipo.setText("Tipo");
+
+        JB_CrearHeroe.setBackground(new java.awt.Color(153, 153, 153));
+        JB_CrearHeroe.setForeground(new java.awt.Color(255, 255, 255));
+        JB_CrearHeroe.setText("Crea Heroe");
+        JB_CrearHeroe.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JB_CrearHeroeActionPerformed(evt);
+            }
+        });
+
+        jTextPane1.setBackground(new java.awt.Color(153, 153, 153));
+        jTextPane1.setFont(new java.awt.Font("Traditional Arabic", 1, 18)); // NOI18N
+        jTextPane1.setForeground(new java.awt.Color(255, 255, 255));
+        jTextPane1.setCaretColor(new java.awt.Color(255, 255, 255));
+        jScrollPane3.setViewportView(jTextPane1);
+
+        javax.swing.GroupLayout JP_HeroesLayout = new javax.swing.GroupLayout(JP_Heroes);
+        JP_Heroes.setLayout(JP_HeroesLayout);
+        JP_HeroesLayout.setHorizontalGroup(
+            JP_HeroesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(JP_HeroesLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(JP_HeroesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(JL_Tipo)
+                    .addComponent(JB_CrearHeroe, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(JP_HeroesLayout.createSequentialGroup()
+                .addGroup(JP_HeroesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(JP_HeroesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(JP_HeroesLayout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(JL_TituloHeroes, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(JP_HeroesLayout.createSequentialGroup()
+                            .addGap(67, 67, 67)
+                            .addComponent(JL_NombreHeroe)
+                            .addGap(50, 50, 50)
+                            .addGroup(JP_HeroesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(JC_Heroes, 0, 182, Short.MAX_VALUE)
+                                .addComponent(jScrollPane3)))))
+                .addContainerGap(20, Short.MAX_VALUE))
+        );
+        JP_HeroesLayout.setVerticalGroup(
+            JP_HeroesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(JP_HeroesLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(126, Short.MAX_VALUE))
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(11, 11, 11)
-                .addComponent(jLabel1)
+                .addComponent(JL_TituloHeroes)
+                .addGroup(JP_HeroesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(JP_HeroesLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(JL_NombreHeroe, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(JP_HeroesLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(2, 2, 2)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(337, Short.MAX_VALUE))
+                .addGroup(JP_HeroesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(JL_Tipo, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
+                    .addComponent(JC_Heroes, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(23, 23, 23)
+                .addComponent(JB_CrearHeroe, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(17, 17, 17))
         );
+
+        JB_EjcutarMison.setBackground(new java.awt.Color(153, 153, 153));
+        JB_EjcutarMison.setForeground(new java.awt.Color(255, 255, 255));
+        JB_EjcutarMison.setText("COMENZAR MISION");
+        JB_EjcutarMison.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JB_EjcutarMisonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout JP_PrincipalLayout = new javax.swing.GroupLayout(JP_Principal);
         JP_Principal.setLayout(JP_PrincipalLayout);
         JP_PrincipalLayout.setHorizontalGroup(
             JP_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(JP_PrincipalLayout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addGroup(JP_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(JP_Titulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(JP_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(JP_PrincipalLayout.createSequentialGroup()
-                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(JP_LIstaDeHeroes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(34, Short.MAX_VALUE))
+                        .addGap(173, 173, 173)
+                        .addComponent(JP_Titulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(JP_PrincipalLayout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addGroup(JP_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(JB_EjcutarMison, javax.swing.GroupLayout.PREFERRED_SIZE, 825, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(JP_PrincipalLayout.createSequentialGroup()
+                                .addComponent(JP_Heroes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(JP_ListaDeMisiones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
         JP_PrincipalLayout.setVerticalGroup(
             JP_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -144,37 +309,74 @@ public class InterfazPrincipal extends javax.swing.JDialog {
                 .addComponent(JP_Titulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(JP_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(JP_LIstaDeHeroes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                    .addComponent(JP_Heroes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(JP_ListaDeMisiones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(JB_EjcutarMison, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(JP_Principal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(JP_Principal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(JP_Principal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(JP_Principal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void JC_HeroesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JC_HeroesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JC_HeroesActionPerformed
+
+    private void JB_CrearHeroeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_CrearHeroeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JB_CrearHeroeActionPerformed
+
+    private void JC_Heroes1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JC_Heroes1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JC_Heroes1ActionPerformed
+
+    private void JB_CrearHeroe1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_CrearHeroe1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JB_CrearHeroe1ActionPerformed
+
+    private void JB_EjcutarMisonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_EjcutarMisonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JB_EjcutarMisonActionPerformed
+
     //////////////coidgo
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel JP_LIstaDeHeroes;
+    private javax.swing.JButton JB_CrearHeroe;
+    private javax.swing.JButton JB_CrearHeroe1;
+    private javax.swing.JButton JB_EjcutarMison;
+    private javax.swing.JComboBox<String> JC_Heroes;
+    private javax.swing.JComboBox<String> JC_Heroes1;
+    private javax.swing.JLabel JL_HabilidadMIsion;
+    private javax.swing.JLabel JL_NombreHeroe;
+    private javax.swing.JLabel JL_NombreMision;
+    private javax.swing.JLabel JL_Tipo;
+    private javax.swing.JLabel JL_TituloDeMisiones;
+    private javax.swing.JLabel JL_TituloHeroes;
+    private javax.swing.JPanel JP_Heroes;
+    private javax.swing.JPanel JP_ListaDeMisiones;
     private javax.swing.JPanel JP_Principal;
     private javax.swing.JPanel JP_Titulo;
+    private javax.swing.JTextArea JT_TextoDeHeroes;
+    private javax.swing.JTextArea JT_TextoDeHeroes1;
     private javax.swing.JLabel LA_Texto;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JPanel jPanel4;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JTextPane jTextPane1;
+    private javax.swing.JTextPane jTextPane2;
     // End of variables declaration//GEN-END:variables
 }
