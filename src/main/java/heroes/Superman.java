@@ -1,6 +1,8 @@
 package heroes;
 
 import habilidades.ISigilo;
+import misiones.Mision;
+import misiones.TipoHabilidad;
 
 /**
  * Clase que representa al héroe Superman.
@@ -25,6 +27,11 @@ public class Superman extends Heroe implements ISigilo {
      */
     public Superman(String nombre) {
         super(nombre);
+    }
+
+    @Override
+    public boolean puedeRealizar(Mision mision) {
+        return mision.getHabilidadRequerida() == TipoHabilidad.SIGILO;
     }
 
     /**

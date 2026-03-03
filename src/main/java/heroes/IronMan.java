@@ -1,6 +1,8 @@
 package heroes;
 
 import habilidades.IControlaFuego;
+import misiones.Mision;
+import misiones.TipoHabilidad;
 
 /**
  * Clase que representa al héroe IronMan.
@@ -26,6 +28,11 @@ public class IronMan extends Heroe implements IControlaFuego {
      */
     public IronMan(String nombre) {
         super(nombre);
+    }
+
+    @Override
+    public boolean puedeRealizar(Mision mision) {
+        return mision.getHabilidadRequerida() == TipoHabilidad.CONTROLARFUEGO;
     }
 
     /**
