@@ -26,7 +26,7 @@ public class Superman extends Heroe implements ISigilo {
      * @param nombre Nombre del héroe
      */
     public Superman(String nombre) {
-        super(nombre);
+        super(nombre,"Superman");
     }
 
     @Override

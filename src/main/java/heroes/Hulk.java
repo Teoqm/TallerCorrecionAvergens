@@ -27,7 +27,7 @@ public class Hulk extends Heroe implements ITreparMuros {
      * @param nombre Nombre del héroe
      */
     public Hulk(String nombre) {
-        super(nombre);
+        super(nombre,"Hulk");
     }
 
     @Override

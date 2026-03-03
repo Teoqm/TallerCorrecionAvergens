@@ -2,6 +2,8 @@ package org.mateo;
 
 import avengers.SistemaAsignacion;
 import heroes.*;
+import interfaz.InterfazPrincipal;
+import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 import misiones.*;
 import notificaciones.TelegramNotifier;
 
@@ -33,7 +35,10 @@ public class Main {
      * @param args argumentos de línea de comandos (no utilizados)
      */
     public static void main(String[] args) {
-
+     
+        
+     /*
+      *
         SistemaAsignacion sistema = new SistemaAsignacion();
 
         // =========================
@@ -75,6 +80,19 @@ public class Main {
         sistema.asignarMision(acuaMan, acuatica);
         sistema.asignarMision(superman, volar);
         sistema.asignarMision(superman, acuatica);
+
+        */
+     
+     
+        InterfazPrincipal inter = new InterfazPrincipal();
+        
+        inter.setTitle("Examen");
+
+        inter.setSize(875,670);
+        inter.setLocationRelativeTo(null);
+        inter.setVisible(true);
+     
+     
     }
 
 }

@@ -26,7 +26,7 @@ public class SpiderMan extends Heroe implements ITreparMuros {
      * @param nombre Nombre del héroe
      */
     public SpiderMan(String nombre) {
-        super(nombre);
+        super(nombre,"SpiderMan");
     }
 
     @Override

@@ -26,7 +26,7 @@ public class Thor extends Heroe implements IVolar {
      * @param nombre Nombre del héroe
      */
     public Thor(String nombre) {
-        super(nombre);
+        super(nombre,"Thor");
     }
 
     @Override

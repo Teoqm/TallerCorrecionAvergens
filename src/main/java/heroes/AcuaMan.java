@@ -1,6 +1,7 @@
 package heroes;
 
 import habilidades.IAcuatica;
+import misiones.Mision;
 
 /**
  * Clase que representa al héroe AcuaMan.
@@ -24,7 +25,8 @@ public class AcuaMan extends Heroe implements IAcuatica {
      * @param nombre Nombre del héroe
      */
     public AcuaMan(String nombre) {
-        super(nombre);
+        super(nombre,"AcuaMan");
+        
     }
 
     /**
@@ -38,5 +40,10 @@ public class AcuaMan extends Heroe implements IAcuatica {
     public void acuatica() {
         System.out.println("yo soy " + this.getNombre() +
                 " y controlo los mares con poderes acuáticos");
+    }
+
+    @Override
+    public boolean puedeRealizar(Mision mision) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

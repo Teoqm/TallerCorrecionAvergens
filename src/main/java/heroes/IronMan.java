@@ -27,7 +27,7 @@ public class IronMan extends Heroe implements IControlaFuego {
      * @param nombre Nombre del héroe
      */
     public IronMan(String nombre) {
-        super(nombre);
+        super(nombre,"IronMan");
     }
 
     @Override
