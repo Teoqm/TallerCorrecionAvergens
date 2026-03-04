@@ -12,6 +12,7 @@ import heroes.SpiderMan;
 import heroes.SuperMan;
 import heroes.Thor;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -19,8 +20,7 @@ import java.util.ArrayList;
  */
 public class InterfazPrincipal extends javax.swing.JFrame {
     
-    //s ecrea un lista de herores para que guarde lo heroes creados 
-    private ArrayList<Heroe> heroes = new ArrayList<>();
+    private GestorDeHeroes gestorHeroe = new GestorDeHeroes();
    /*
     Se crea los Jpanel y mas herramientas que ayudan al trabajo 
     */
@@ -205,7 +205,7 @@ public class InterfazPrincipal extends javax.swing.JFrame {
 
         JT_TextoDeHeroes.setBackground(new java.awt.Color(153, 153, 153));
         JT_TextoDeHeroes.setColumns(20);
-        JT_TextoDeHeroes.setFont(new java.awt.Font("Times New Roman", 1, 30)); // NOI18N
+        JT_TextoDeHeroes.setFont(new java.awt.Font("Times New Roman", 1, 28)); // NOI18N
         JT_TextoDeHeroes.setForeground(new java.awt.Color(0, 102, 102));
         JT_TextoDeHeroes.setRows(5);
         jScrollPane1.setViewportView(JT_TextoDeHeroes);
@@ -301,17 +301,17 @@ public class InterfazPrincipal extends javax.swing.JFrame {
             .addGroup(JP_PrincipalLayout.createSequentialGroup()
                 .addGroup(JP_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(JP_PrincipalLayout.createSequentialGroup()
-                        .addGap(173, 173, 173)
-                        .addComponent(JP_Titulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(JP_PrincipalLayout.createSequentialGroup()
                         .addGap(25, 25, 25)
                         .addGroup(JP_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(JB_EjcutarMison, javax.swing.GroupLayout.PREFERRED_SIZE, 825, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(JP_PrincipalLayout.createSequentialGroup()
                                 .addComponent(JP_LIstadoHeroes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(JP_ListaDeMisiones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(22, Short.MAX_VALUE))
+                                .addComponent(JP_ListaDeMisiones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(JP_PrincipalLayout.createSequentialGroup()
+                        .addGap(173, 173, 173)
+                        .addComponent(JP_Titulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
         JP_PrincipalLayout.setVerticalGroup(
             JP_PrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -331,7 +331,9 @@ public class InterfazPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(JP_Principal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(JP_Principal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 6, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -355,95 +357,24 @@ public class InterfazPrincipal extends javax.swing.JFrame {
         // Obtener texto del JTextField
         String nombreNew = JT_HeroeNombre.getText();
 
-        // Validar que no esté vacío
-        if (nombreNew == null || nombreNew.isEmpty()) {
-            System.out.println("Debe ingresar un nombre");
-            return;
+        //se comprueb si no esta vacio el JT
+        if(!gestorHeroe.ValidarTexto(nombreNew)){
+        JOptionPane.showMessageDialog(this, "Debe ingresar un nombre");
+        
+        //se comprueb si no esta repetido el nombre
+        }else if(gestorHeroe.nombreRepetido(nombreNew)){
+        JOptionPane.showMessageDialog(this, "NO se puede erepetir el nombre");
+        }
+        else{
+            // Obtener héroe seleccionado
+            String tipoHeroe = JC_ListadoHeroes.getSelectedItem().toString();
+            
+            //crea heroe
+            this.gestorHeroe.crearNuevoHeroe(tipoHeroe, nombreNew);
+        
         }
 
-        // Obtener héroe seleccionado
-        String tipoHeroe = JC_ListadoHeroes.getSelectedItem().toString();
-
-        switch (tipoHeroe) {
-
-            case "AcuaMan":
-                System.out.println("Creando AcuaMan: " + nombreNew);
-                
-                AcuaMan acuaManNew = new AcuaMan(nombreNew);
-                heroes.add(acuaManNew);
-                break;
-
-            case "Hulk":
-                System.out.println("Creando Hulk: " + nombreNew);
-                
-                Hulk hulkNew = new Hulk(nombreNew);
-                
-                heroes.add(hulkNew);
-                
-                break;
-
-            case "IronMan":
-                System.out.println("Creando IroMan: " + nombreNew);
-                
-                IronMan iroMan = new IronMan(nombreNew);
-                
-                heroes.add(iroMan);
-                break;
-
-            case "SpiderMan":
-                System.out.println("Creando SpiderMan: " + nombreNew);
-                
-                SpiderMan spiderNew = new SpiderMan(nombreNew);
-                
-                heroes.add(spiderNew);
-                break;
-
-            case "Superman":
-                System.out.println("Creando Superman: " + nombreNew);
-                
-                SuperMan superNew = new SuperMan(nombreNew);
-                
-                heroes.add(superNew);
-                
-                
-                break;
-
-            case "Thor":
-                System.out.println("Creando Thor: " + nombreNew);
-                
-                Thor thorNew = new Thor(nombreNew); 
-                heroes.add(thorNew);
-                break;
-
-            default:
-                System.out.println("Opción incorrecta");
-                break;
-        }
-        
-        
-        // se va crea un cilo que tiene el objetivo de ver todos lo heroes y gusdarlos 
-        //en un string para que se imprima en JT_Texto
-        
-        
-        // Crear un StringBuilder para acumular texto
-        StringBuilder texto = new StringBuilder();
-
-        int numero = 0;
-
-        // Recorrer la lista de héroes
-        for (Heroe heroe : this.heroes) {
-
-            texto.append(">")
-                 .append(numero + 1)
-                 .append(": ")
-                 .append(heroe.getNombre())
-                 .append(" [")
-                 .append(heroe.getTipo())
-                 .append("]\n");
-
-            numero++;
-        }
-
+        StringBuilder texto = gestorHeroe.imprimirTexto();
         // Mostrar el resultado en el JTextArea
         JT_TextoDeHeroes.setText(texto.toString());
     }//GEN-LAST:event_JB_CrearHeroeActionPerformed
