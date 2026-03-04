@@ -4,6 +4,7 @@
  */
 package interfaz;
 
+import heroes.AcuaMan;
 import heroes.Heroe;
 import java.util.ArrayList;
 
@@ -13,7 +14,7 @@ import java.util.ArrayList;
  */
 public class InterfazPrincipal extends javax.swing.JFrame {
     
-    
+    //s ecrea un lista de herores para que guarde lo heroes creados 
     private ArrayList<Heroe> heroes = new ArrayList<>();
    /*
     Se crea los Jpanel y mas herramientas que ayudan al trabajo 
@@ -345,31 +346,52 @@ public class InterfazPrincipal extends javax.swing.JFrame {
     */
     private void JB_CrearHeroeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_CrearHeroeActionPerformed
          
-        //primero se comprueva si tiene texto el JTextPanel
-        if(!JT_HeroeNombre.getAccessibleContext()== null){
-            
-            //si es asi se guarda en nombreNew
-            String nombreNew = JT_HeroeNombre.getAccessibleContext();
+        // Obtener texto del JTextField
+        String nombreNew = JT_HeroeNombre.getText();
+
+        // Validar que no esté vacío
+        if (nombreNew == null || nombreNew.isEmpty()) {
+            System.out.println("Debe ingresar un nombre");
+            return;
         }
-        
-        //despues se comprueba si tiene texto el JTextPanel
-        switch (JC_ListadoHeroes.getActionCommand()) {
-            case :
-                System.out.println("¡Felicidades! El niño tiene un descuento de 500");
-                this.usuario = new Ninio();
+
+        // Obtener héroe seleccionado
+        String tipoHeroe = JC_ListadoHeroes.getSelectedItem().toString();
+
+        switch (tipoHeroe) {
+
+            case "AcuaMan":
+                System.out.println("Creando AcuaMan: " + nombreNew);
+                
+//                AcuaMan heroNew = new AcuaMan(nombreNew);
+//                heroes.add(heroNew);
                 break;
-            case 2:
-                System.out.println("Disfrute la película, usuario adulto.");
-                this.usuario = new Adultos();
+
+            case "Hulk":
+                System.out.println("Creando Hulk: " + nombreNew);
                 break;
-            case 3:
-                System.out.println("¡Felicidades! El mayor tiene un descuento de 1000");
-                this.usuario = new Mayores();
+
+            case "IroMan":
+                System.out.println("Creando IroMan: " + nombreNew);
                 break;
+
+            case "SpiderMan":
+                System.out.println("Creando SpiderMan: " + nombreNew);
+                break;
+
+            case "Superman":
+                System.out.println("Creando Superman: " + nombreNew);
+                break;
+
+            case "Thor":
+                System.out.println("Creando Thor: " + nombreNew);
+                break;
+
             default:
-                System.out.println("Número incorrecto");
+                System.out.println("Opción incorrecta");
                 break;
-            
+        }
+  
     }//GEN-LAST:event_JB_CrearHeroeActionPerformed
 
     private void JC_ListaHabilidadesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JC_ListaHabilidadesActionPerformed
