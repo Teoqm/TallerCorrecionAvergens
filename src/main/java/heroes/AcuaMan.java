@@ -45,6 +45,6 @@ public class AcuaMan extends Heroe implements IAcuatica {
 
     @Override
     public boolean puedeRealizar(Mision mision) {
-        return mision.getHabilidadRequerida() == TipoHabilidad.ACUATICA; // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return mision.getHabilidadRequerida() == TipoHabilidad.ACUATICA;
     }
 }
