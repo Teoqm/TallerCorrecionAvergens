@@ -6,6 +6,11 @@ package interfaz;
 
 import heroes.AcuaMan;
 import heroes.Heroe;
+import heroes.Hulk;
+import heroes.IronMan;
+import heroes.SpiderMan;
+import heroes.SuperMan;
+import heroes.Thor;
 import java.util.ArrayList;
 
 /**
@@ -186,7 +191,7 @@ public class InterfazPrincipal extends javax.swing.JFrame {
 
         JC_ListadoHeroes.setBackground(new java.awt.Color(153, 153, 153));
         JC_ListadoHeroes.setForeground(new java.awt.Color(255, 255, 255));
-        JC_ListadoHeroes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "AcuaMan", "Hulk", "IroMan", "SpiderMan", "Superman", "Thor" }));
+        JC_ListadoHeroes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "AcuaMan", "Hulk", "IronMan", "SpiderMan", "Superman", "Thor" }));
         JC_ListadoHeroes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JC_ListadoHeroesActionPerformed(evt);
@@ -200,7 +205,8 @@ public class InterfazPrincipal extends javax.swing.JFrame {
 
         JT_TextoDeHeroes.setBackground(new java.awt.Color(153, 153, 153));
         JT_TextoDeHeroes.setColumns(20);
-        JT_TextoDeHeroes.setForeground(new java.awt.Color(102, 102, 102));
+        JT_TextoDeHeroes.setFont(new java.awt.Font("Times New Roman", 1, 30)); // NOI18N
+        JT_TextoDeHeroes.setForeground(new java.awt.Color(0, 102, 102));
         JT_TextoDeHeroes.setRows(5);
         jScrollPane1.setViewportView(JT_TextoDeHeroes);
 
@@ -363,35 +369,83 @@ public class InterfazPrincipal extends javax.swing.JFrame {
             case "AcuaMan":
                 System.out.println("Creando AcuaMan: " + nombreNew);
                 
-//                AcuaMan heroNew = new AcuaMan(nombreNew);
-//                heroes.add(heroNew);
+                AcuaMan acuaManNew = new AcuaMan(nombreNew);
+                heroes.add(acuaManNew);
                 break;
 
             case "Hulk":
                 System.out.println("Creando Hulk: " + nombreNew);
+                
+                Hulk hulkNew = new Hulk(nombreNew);
+                
+                heroes.add(hulkNew);
+                
                 break;
 
-            case "IroMan":
+            case "IronMan":
                 System.out.println("Creando IroMan: " + nombreNew);
+                
+                IronMan iroMan = new IronMan(nombreNew);
+                
+                heroes.add(iroMan);
                 break;
 
             case "SpiderMan":
                 System.out.println("Creando SpiderMan: " + nombreNew);
+                
+                SpiderMan spiderNew = new SpiderMan(nombreNew);
+                
+                heroes.add(spiderNew);
                 break;
 
             case "Superman":
                 System.out.println("Creando Superman: " + nombreNew);
+                
+                SuperMan superNew = new SuperMan(nombreNew);
+                
+                heroes.add(superNew);
+                
+                
                 break;
 
             case "Thor":
                 System.out.println("Creando Thor: " + nombreNew);
+                
+                Thor thorNew = new Thor(nombreNew); 
+                heroes.add(thorNew);
                 break;
 
             default:
                 System.out.println("Opción incorrecta");
                 break;
         }
-  
+        
+        
+        // se va crea un cilo que tiene el objetivo de ver todos lo heroes y gusdarlos 
+        //en un string para que se imprima en JT_Texto
+        
+        
+        // Crear un StringBuilder para acumular texto
+        StringBuilder texto = new StringBuilder();
+
+        int numero = 0;
+
+        // Recorrer la lista de héroes
+        for (Heroe heroe : this.heroes) {
+
+            texto.append(">")
+                 .append(numero + 1)
+                 .append(": ")
+                 .append(heroe.getNombre())
+                 .append(" [")
+                 .append(heroe.getTipo())
+                 .append("]\n");
+
+            numero++;
+        }
+
+        // Mostrar el resultado en el JTextArea
+        JT_TextoDeHeroes.setText(texto.toString());
     }//GEN-LAST:event_JB_CrearHeroeActionPerformed
 
     private void JC_ListaHabilidadesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JC_ListaHabilidadesActionPerformed

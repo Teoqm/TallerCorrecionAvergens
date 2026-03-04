@@ -17,6 +17,11 @@ public abstract class Heroe {
         return nombre;
     }
 
+    public String getTipo() {
+        return tipo;
+    }
+    
+    
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
