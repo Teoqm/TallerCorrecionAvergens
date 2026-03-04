@@ -2,6 +2,7 @@ package heroes;
 
 import habilidades.IAcuatica;
 import misiones.Mision;
+import misiones.TipoHabilidad;
 
 /**
  * Clase que representa al héroe AcuaMan.
@@ -44,6 +45,6 @@ public class AcuaMan extends Heroe implements IAcuatica {
 
     @Override
     public boolean puedeRealizar(Mision mision) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return mision.getHabilidadRequerida() == TipoHabilidad.ACUATICA;
     }
 }
