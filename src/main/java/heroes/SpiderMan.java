@@ -1,6 +1,8 @@
 package heroes;
 
 import habilidades.ITreparMuros;
+import misiones.Mision;
+import misiones.TipoHabilidad;
 
 /**
  * Clase que representa al héroe SpiderMan.
@@ -24,7 +26,12 @@ public class SpiderMan extends Heroe implements ITreparMuros {
      * @param nombre Nombre del héroe
      */
     public SpiderMan(String nombre) {
-        super(nombre);
+        super(nombre,"SpiderMan");
+    }
+
+    @Override
+    public boolean puedeRealizar(Mision mision) {
+        return mision.getHabilidadRequerida() == TipoHabilidad.TREPARMUROS;
     }
 
     /**

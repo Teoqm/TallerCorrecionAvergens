@@ -1,6 +1,8 @@
 package heroes;
 
 import habilidades.IAcuatica;
+import misiones.Mision;
+import misiones.TipoHabilidad;
 
 /**
  * Clase que representa al héroe AcuaMan.
@@ -24,7 +26,8 @@ public class AcuaMan extends Heroe implements IAcuatica {
      * @param nombre Nombre del héroe
      */
     public AcuaMan(String nombre) {
-        super(nombre);
+        super(nombre,"AcuaMan");
+        
     }
 
     /**
@@ -38,5 +41,10 @@ public class AcuaMan extends Heroe implements IAcuatica {
     public void acuatica() {
         System.out.println("yo soy " + this.getNombre() +
                 " y controlo los mares con poderes acuáticos");
+    }
+
+    @Override
+    public boolean puedeRealizar(Mision mision) {
+        return mision.getHabilidadRequerida() == TipoHabilidad.ACUATICA;
     }
 }

@@ -1,6 +1,8 @@
 package heroes;
 
 import habilidades.IVolar;
+import misiones.Mision;
+import misiones.TipoHabilidad;
 
 /**
  * Clase que representa al héroe Thor.
@@ -24,7 +26,12 @@ public class Thor extends Heroe implements IVolar {
      * @param nombre Nombre del héroe
      */
     public Thor(String nombre) {
-        super(nombre);
+        super(nombre,"Thor");
+    }
+
+    @Override
+    public boolean puedeRealizar(Mision mision) {
+        return mision.getHabilidadRequerida() == TipoHabilidad.VOLAR;
     }
 
     /**

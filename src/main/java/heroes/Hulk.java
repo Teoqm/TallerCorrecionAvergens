@@ -1,6 +1,8 @@
 package heroes;
 
 import habilidades.ITreparMuros;
+import misiones.Mision;
+import misiones.TipoHabilidad;
 
 /**
  * Clase que representa al héroe Hulk.
@@ -25,7 +27,12 @@ public class Hulk extends Heroe implements ITreparMuros {
      * @param nombre Nombre del héroe
      */
     public Hulk(String nombre) {
-        super(nombre);
+        super(nombre,"Hulk");
+    }
+
+    @Override
+    public boolean puedeRealizar(Mision mision) {
+        return mision.getHabilidadRequerida() == TipoHabilidad.TREPARMUROS;
     }
 
     /**
