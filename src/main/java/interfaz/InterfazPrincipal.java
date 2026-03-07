@@ -20,6 +20,7 @@ import javax.swing.JOptionPane;
  */
 public class InterfazPrincipal extends javax.swing.JFrame {
     
+    private GestorDeMisiones gestorMision=new GestorDeMisiones(); 
     private GestorDeHeroes gestorHeroe = new GestorDeHeroes();
    /*
     Se crea los Jpanel y mas herramientas que ayudan al trabajo 
@@ -44,10 +45,10 @@ public class InterfazPrincipal extends javax.swing.JFrame {
         JL_HabilidadMIsion = new javax.swing.JLabel();
         JC_ListaHabilidades = new javax.swing.JComboBox<>();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTextPane2 = new javax.swing.JTextPane();
+        JT_MisionNombre = new javax.swing.JTextPane();
         JB_CrearMison = new javax.swing.JButton();
         jScrollPane5 = new javax.swing.JScrollPane();
-        JT_TextoDeHeroes1 = new javax.swing.JTextArea();
+        JT_TextoDeMisiones = new javax.swing.JTextArea();
         JP_Titulo = new javax.swing.JPanel();
         LA_Texto = new javax.swing.JLabel();
         JP_LIstadoHeroes = new javax.swing.JPanel();
@@ -92,10 +93,10 @@ public class InterfazPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jTextPane2.setBackground(new java.awt.Color(153, 153, 153));
-        jTextPane2.setFont(new java.awt.Font("Traditional Arabic", 1, 18)); // NOI18N
-        jTextPane2.setForeground(new java.awt.Color(255, 255, 255));
-        jScrollPane4.setViewportView(jTextPane2);
+        JT_MisionNombre.setBackground(new java.awt.Color(153, 153, 153));
+        JT_MisionNombre.setFont(new java.awt.Font("Traditional Arabic", 1, 18)); // NOI18N
+        JT_MisionNombre.setForeground(new java.awt.Color(255, 255, 255));
+        jScrollPane4.setViewportView(JT_MisionNombre);
 
         JB_CrearMison.setBackground(new java.awt.Color(153, 153, 153));
         JB_CrearMison.setForeground(new java.awt.Color(255, 255, 255));
@@ -106,11 +107,11 @@ public class InterfazPrincipal extends javax.swing.JFrame {
             }
         });
 
-        JT_TextoDeHeroes1.setBackground(new java.awt.Color(153, 153, 153));
-        JT_TextoDeHeroes1.setColumns(20);
-        JT_TextoDeHeroes1.setForeground(new java.awt.Color(102, 102, 102));
-        JT_TextoDeHeroes1.setRows(5);
-        jScrollPane5.setViewportView(JT_TextoDeHeroes1);
+        JT_TextoDeMisiones.setBackground(new java.awt.Color(153, 153, 153));
+        JT_TextoDeMisiones.setColumns(20);
+        JT_TextoDeMisiones.setForeground(new java.awt.Color(102, 102, 102));
+        JT_TextoDeMisiones.setRows(5);
+        jScrollPane5.setViewportView(JT_TextoDeMisiones);
 
         javax.swing.GroupLayout JP_ListaDeMisionesLayout = new javax.swing.GroupLayout(JP_ListaDeMisiones);
         JP_ListaDeMisiones.setLayout(JP_ListaDeMisionesLayout);
@@ -385,6 +386,22 @@ public class InterfazPrincipal extends javax.swing.JFrame {
 
     private void JB_CrearMisonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_CrearMisonActionPerformed
         // TODO add your handling code here:
+        String MisionNew=JT_MisionNombre.getText();
+        
+        if(!gestorMision.ValidarTexto(MisionNew)){
+        JOptionPane.showMessageDialog(this, "Debe ingresar un nombre para la mision");
+        }
+        else if(gestorMision.nombreRepetido(MisionNew)){
+        JOptionPane.showMessageDialog(this, "NO se puede crear la misma mision nuevamente");
+        }
+        else{
+            String tipoHabuilidad =JC_ListaHabilidades.getSelectedItem().toString();
+            
+            this.gestorMision.crearNuevaMision(MisionNew, tipoHabuilidad);
+        }
+        
+        StringBuilder texto=gestorMision.imprimirMisiones();
+        JT_TextoDeMisiones.setText(texto.toString());
     }//GEN-LAST:event_JB_CrearMisonActionPerformed
 
     private void JB_EjcutarMisonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_EjcutarMisonActionPerformed
@@ -411,13 +428,13 @@ public class InterfazPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel JP_Principal;
     private javax.swing.JPanel JP_Titulo;
     private javax.swing.JTextPane JT_HeroeNombre;
+    private javax.swing.JTextPane JT_MisionNombre;
     private javax.swing.JTextArea JT_TextoDeHeroes;
-    private javax.swing.JTextArea JT_TextoDeHeroes1;
+    private javax.swing.JTextArea JT_TextoDeMisiones;
     private javax.swing.JLabel LA_Texto;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JTextPane jTextPane2;
     // End of variables declaration//GEN-END:variables
 }
