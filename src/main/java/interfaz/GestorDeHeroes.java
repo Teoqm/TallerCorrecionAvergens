@@ -145,5 +145,8 @@ public class GestorDeHeroes {
     
         return texto;
     }
+    public ArrayList<Heroe> getHeroes() {
+        return heroes;
+    }
     
 }

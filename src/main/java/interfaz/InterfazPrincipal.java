@@ -11,6 +11,8 @@ import heroes.IronMan;
 import heroes.SpiderMan;
 import heroes.SuperMan;
 import heroes.Thor;
+import misiones.Mision;
+
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -406,6 +408,39 @@ public class InterfazPrincipal extends javax.swing.JFrame {
 
     private void JB_EjcutarMisonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_EjcutarMisonActionPerformed
         // TODO add your handling code here:
+
+        StringBuilder resultado = new StringBuilder();
+        ArrayList<Heroe> heroesUsados = new ArrayList<>();
+
+        for (Mision m : gestorMision.getMisiones()) {
+
+            boolean asignada = false;
+
+            for (Heroe h : gestorHeroe.getHeroes()) {
+
+                if (!heroesUsados.contains(h) && h.puedeRealizar(m)) {
+
+                    resultado.append("Misión: ")
+                            .append(m.getNombre())
+                            .append(" -> Asignada a: ")
+                            .append(h.getNombre())
+                            .append("\n");
+
+                    heroesUsados.add(h);
+                    asignada = true;
+                    break;
+                }
+            }
+
+            if (!asignada) {
+                resultado.append("Misión: ")
+                        .append(m.getNombre())
+                        .append(" -> No hay héroe disponible\n");
+            }
+        }
+
+        JT_TextoDeMisiones.append("\n----- RESULTADO DE EJECUCIÓN -----\n");
+        JT_TextoDeMisiones.append(resultado.toString());
     }//GEN-LAST:event_JB_EjcutarMisonActionPerformed
 
     //////////////coidgo
