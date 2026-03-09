@@ -30,6 +30,17 @@ public class IronMan extends Heroe implements IControlaFuego {
         super(nombre,"IronMan");
     }
 
+    /**
+     * Determina si IronMan puede realizar una misión específica.
+     * <p>
+     * IronMan solo puede participar en misiones que requieran
+     * la habilidad {@code CONTROLARFUEGO}.
+     * </p>
+     *
+     * @param mision misión que se desea evaluar
+     * @return {@code true} si la misión requiere controlar fuego,
+     * {@code false} en caso contrario
+     */
     @Override
     public boolean puedeRealizar(Mision mision) {
         return mision.getHabilidadRequerida() == TipoHabilidad.CONTROLARFUEGO;

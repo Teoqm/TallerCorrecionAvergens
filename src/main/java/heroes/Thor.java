@@ -29,6 +29,17 @@ public class Thor extends Heroe implements IVolar {
         super(nombre,"Thor");
     }
 
+    /**
+     * Determina si Thor puede realizar una misión específica.
+     * <p>
+     * Thor solo puede participar en misiones que requieran
+     * la habilidad {@code VOLAR}.
+     * </p>
+     *
+     * @param mision misión que se desea evaluar
+     * @return {@code true} si la misión requiere la habilidad de volar,
+     * {@code false} en caso contrario
+     */
     @Override
     public boolean puedeRealizar(Mision mision) {
         return mision.getHabilidadRequerida() == TipoHabilidad.VOLAR;

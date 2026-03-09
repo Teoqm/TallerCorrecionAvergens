@@ -1,9 +1,8 @@
 package avengers;
 
-import excepciones.HeroeIncompatibleException;
 import heroes.Heroe;
 import java.util.ArrayList;
-import misiones.IMision;
+
 import misiones.Mision;
 import notificaciones.TelegramNotifier;
 
@@ -12,7 +11,7 @@ import notificaciones.TelegramNotifier;
  * a los diferentes héroes del sistema.
  * <p>
  * Aplica polimorfismo permitiendo que cualquier implementación
- * de {@link IMision} sea ejecutada por un objeto de tipo {@link Heroe}.
+ * de {@link Mision} sea ejecutada por un objeto de tipo {@link Heroe}.
  * </p>
  * <p>
  * También centraliza el manejo de excepciones relacionadas
@@ -25,47 +24,35 @@ import notificaciones.TelegramNotifier;
  */
 public class SistemaAsignacion {
 
-    
-    ArrayList<Heroe> heroesUsados = new ArrayList<>();
-    
     /**
-     * Asigna una misión a un héroe y ejecuta la acción correspondiente.
+     * Lista que almacena los héroes que ya fueron utilizados
+     * para evitar que un mismo héroe sea asignado a más de una misión.
+     */
+    ArrayList<Heroe> heroesUsados = new ArrayList<>();
+
+
+    /**
+     * Método encargado de asignar misiones a los héroes disponibles.
      * <p>
-     * Si el héroe no cumple con los requisitos de la misión,
-     * se captura la excepción y se muestra el mensaje de error.
+     * Recorre la lista de misiones y busca un héroe que pueda realizar
+     * cada una de ellas. Si encuentra un héroe compatible que no haya
+     * sido utilizado previamente, se le asigna la misión y se registra
+     * en la lista de héroes usados.
+     * </p>
+     * <p>
+     * En caso de que no exista un héroe disponible para una misión,
+     * el sistema lo indicará en el resultado.
      * </p>
      *
-     * @param heroe  héroe al que se le asignará la misión
-     * @param mision misión que se desea ejecutar
+     * @param misiones Lista de misiones que se desean asignar.
+     * @param heroes Lista de héroes disponibles para realizar misiones.
+     * @return Cadena de texto con el resultado de las asignaciones realizadas.
      */
-
-    
-    public void asignarMision(Heroe heroe, IMision mision) {
-
-        try {
-
-            mision.ejecutar(heroe);
-            TelegramNotifier notifier = new TelegramNotifier();
-
-            // Mensaje simple
-            notifier.enviarMensaje("Mision realizada correctamente\n");
-
-        } catch (Exception e) {
-
-            System.out.println(e.getMessage());
-
-        }
-
-    }
-    
-   /* ese asignar misiones es muy diferentes al anteriar ya que se el primeor es paar 
-      un solo heroe y pero este nuevo sirve para asignar misiones a diferes heroes 
-    */
     public String asignarMisionInterfaz(ArrayList<Mision> misiones , ArrayList<Heroe> heroes ){
-        
-        
+
+
         StringBuilder resultado = new StringBuilder();
-        
+
         for (Mision m : misiones) {
 
             boolean asignada = false;
@@ -89,10 +76,10 @@ public class SistemaAsignacion {
             if (!asignada) {
                 resultado.append("Misión: ")
                         .append(m.getNombre())
-                        .append(" -> No hay héroe dispo3nible\n");
+                        .append(" -> No hay heroe disponible\n");
             }
         }
-    
+
         return resultado.toString();
     }
 }

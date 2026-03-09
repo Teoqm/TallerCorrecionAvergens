@@ -8,7 +8,7 @@ import misiones.TipoHabilidad;
  * Clase que representa al héroe AcuaMan.
  * <p>
  * AcuaMan hereda de la clase {@code Heroe} y posee la habilidad
- * acuática, ya que implementa la interfaz {@code Iacuatica}.
+ * acuática, ya que implementa la interfaz {@code IAcuatica}.
  * </p>
  * <p>
  * Esto le permite participar en misiones que requieran
@@ -27,7 +27,7 @@ public class AcuaMan extends Heroe implements IAcuatica {
      */
     public AcuaMan(String nombre) {
         super(nombre,"AcuaMan");
-        
+
     }
 
     /**
@@ -43,6 +43,17 @@ public class AcuaMan extends Heroe implements IAcuatica {
                 " y controlo los mares con poderes acuáticos");
     }
 
+    /**
+     * Determina si el héroe puede realizar una misión específica.
+     * <p>
+     * En el caso de AcuaMan, solo puede realizar misiones que
+     * requieran la habilidad {@code ACUATICA}.
+     * </p>
+     *
+     * @param mision misión que se desea evaluar
+     * @return {@code true} si la misión requiere habilidad acuática,
+     * {@code false} en caso contrario
+     */
     @Override
     public boolean puedeRealizar(Mision mision) {
         return mision.getHabilidadRequerida() == TipoHabilidad.ACUATICA;
