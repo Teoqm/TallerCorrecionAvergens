@@ -43,6 +43,15 @@ public class Main {
      * @param args argumentos de línea de comandos (no utilizados)
      */
     public static void main(String[] args) {
+<<<<<<< HEAD
+     
+        
+     /*
+      *
+        *==== SISTEMA ANTIGUO =====
+        SistemaAsignacion sistema = new SistemaAsignacion();
+=======
+>>>>>>> d5a0ed233b678a82e295f4768b94bd7baefcf175
 
         // Creación de la pantalla inicial del sistema
         PantallaInicio inter = new PantallaInicio();

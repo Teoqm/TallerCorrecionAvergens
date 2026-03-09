@@ -4,6 +4,7 @@
  */
 package interfaz;
 
+import java.awt.Color;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.IOException;
@@ -47,9 +48,13 @@ public class PantallaInicio extends javax.swing.JFrame {
      */
     public PantallaInicio() {
         initComponents();
+<<<<<<< HEAD
+        
+=======
 
         System.out.println(getClass().getResource("/imagenes/IconoAvengers.jpg"));
         System.out.println("holaaa");
+>>>>>>> d5a0ed233b678a82e295f4768b94bd7baefcf175
         this.setSize(970,600);
         setResizable(false);
         this.setLocationRelativeTo(null);
@@ -94,8 +99,18 @@ public class PantallaInicio extends javax.swing.JFrame {
 
         jLayeredPane2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jToggleButton1.setBackground(new java.awt.Color(153, 153, 153));
         jToggleButton1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jToggleButton1.setForeground(new java.awt.Color(255, 255, 255));
         jToggleButton1.setText("COMENZAR");
+        jToggleButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jToggleButton1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jToggleButton1MouseExited(evt);
+            }
+        });
         jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jToggleButton1ActionPerformed(evt);
@@ -149,6 +164,20 @@ public class PantallaInicio extends javax.swing.JFrame {
         inter.setVisible(true);
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
+<<<<<<< HEAD
+    private void jToggleButton1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jToggleButton1MouseEntered
+        // Cambiar color del botón cuando el mouse está encima
+        jToggleButton1.setBackground(new Color(255,255,255));
+        jToggleButton1.setForeground(Color.GRAY);
+    }//GEN-LAST:event_jToggleButton1MouseEntered
+
+    private void jToggleButton1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jToggleButton1MouseExited
+        // Regresar al color original
+        jToggleButton1.setBackground(new Color(153,153,153));
+        jToggleButton1.setForeground(new Color(255,255,255));
+    }//GEN-LAST:event_jToggleButton1MouseExited
+
+=======
     /**
      * Reproduce la música de fondo del menú principal.
      * <p>
@@ -156,6 +185,7 @@ public class PantallaInicio extends javax.swing.JFrame {
      * y lo reproduce en bucle continuo.
      * </p>
      */
+>>>>>>> d5a0ed233b678a82e295f4768b94bd7baefcf175
     public void reproducirSonido() {
         try {
             AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(
