@@ -37,6 +37,12 @@ public class InterfazPrincipal extends javax.swing.JFrame {
     public InterfazPrincipal() {
         initComponents();
         
+        try{ 
+            this.setIconImage(new ImageIcon(getClass().getResource("/imagenes/IconoAvengers.jpg")).getImage());
+
+        }catch(NullPointerException e){
+            System.out.println("Imagen no encontrada");
+        }
 
     }
 
