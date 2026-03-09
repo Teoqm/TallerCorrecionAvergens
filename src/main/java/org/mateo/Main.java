@@ -1,8 +1,8 @@
 package org.mateo;
 
-import avengers.SistemaAsignacion;
 import heroes.*;
 import interfaz.InterfazPrincipal;
+import interfaz.PantallaInicio;
 import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 import misiones.*;
 import notificaciones.TelegramNotifier;
@@ -84,11 +84,11 @@ public class Main {
         */
      
      
-        InterfazPrincipal inter = new InterfazPrincipal();
+        PantallaInicio inter = new PantallaInicio();
         
-        inter.setTitle("Examen");
+        inter.setTitle("Avengers");
 
-        inter.setSize(875,670);
+
         inter.setLocationRelativeTo(null);
         inter.setVisible(true);
      

@@ -13,10 +13,14 @@ import heroes.SpiderMan;
 import heroes.SuperMan;
 import heroes.Thor;
 import java.awt.Color;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import misiones.Mision;
 
 import java.util.ArrayList;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import notificaciones.TelegramNotifier;
 
 /**
  *
@@ -32,6 +36,8 @@ public class InterfazPrincipal extends javax.swing.JFrame {
     */
     public InterfazPrincipal() {
         initComponents();
+        
+
     }
 
     /**
@@ -437,6 +443,10 @@ public class InterfazPrincipal extends javax.swing.JFrame {
     private void JB_EjcutarMisonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_EjcutarMisonActionPerformed
 
         String mesaje = this.asignacion.asignarMisionInterfaz(gestorMision.getMisiones(), gestorHeroe.getHeroes());
+        
+        TelegramNotifier notifier = new TelegramNotifier();
+        // Mensaje simple
+        notifier.enviarMensaje("\n----- RESULTADO DE EJECUCIÓN -----\n" + mesaje);
         JOptionPane.showMessageDialog(this, "\n----- RESULTADO DE EJECUCIÓN -----\n" + mesaje);
         
     }//GEN-LAST:event_JB_EjcutarMisonActionPerformed
