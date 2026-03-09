@@ -107,7 +107,7 @@ public class GestorDeMisiones {
         
     }
     
-        public boolean nombreRepetido(String nombreNew){
+    public boolean nombreRepetido(String nombreNew){
 
             for(Mision h : this.misiones){
 

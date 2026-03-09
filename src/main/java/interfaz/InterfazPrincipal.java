@@ -24,6 +24,7 @@ public class InterfazPrincipal extends javax.swing.JFrame {
     
     private GestorDeMisiones gestorMision=new GestorDeMisiones(); 
     private GestorDeHeroes gestorHeroe = new GestorDeHeroes();
+    
    /*
     Se crea los Jpanel y mas herramientas que ayudan al trabajo 
     */
@@ -111,7 +112,8 @@ public class InterfazPrincipal extends javax.swing.JFrame {
 
         JT_TextoDeMisiones.setBackground(new java.awt.Color(153, 153, 153));
         JT_TextoDeMisiones.setColumns(20);
-        JT_TextoDeMisiones.setForeground(new java.awt.Color(102, 102, 102));
+        JT_TextoDeMisiones.setFont(new java.awt.Font("Times New Roman", 1, 28)); // NOI18N
+        JT_TextoDeMisiones.setForeground(new java.awt.Color(0, 102, 102));
         JT_TextoDeMisiones.setRows(5);
         jScrollPane5.setViewportView(JT_TextoDeMisiones);
 
@@ -411,7 +413,7 @@ public class InterfazPrincipal extends javax.swing.JFrame {
 
         StringBuilder resultado = new StringBuilder();
         ArrayList<Heroe> heroesUsados = new ArrayList<>();
-
+        //lisata de msioens
         for (Mision m : gestorMision.getMisiones()) {
 
             boolean asignada = false;

@@ -2,7 +2,9 @@ package avengers;
 
 import excepciones.HeroeIncompatibleException;
 import heroes.Heroe;
+import java.util.ArrayList;
 import misiones.IMision;
+import misiones.Mision;
 import notificaciones.TelegramNotifier;
 
 /**
@@ -23,6 +25,9 @@ import notificaciones.TelegramNotifier;
  */
 public class SistemaAsignacion {
 
+    
+    ArrayList<Heroe> heroesUsados = new ArrayList<>();
+    
     /**
      * Asigna una misión a un héroe y ejecuta la acción correspondiente.
      * <p>
@@ -33,6 +38,8 @@ public class SistemaAsignacion {
      * @param heroe  héroe al que se le asignará la misión
      * @param mision misión que se desea ejecutar
      */
+
+    
     public void asignarMision(Heroe heroe, IMision mision) {
 
         try {
@@ -50,5 +57,42 @@ public class SistemaAsignacion {
         }
 
     }
+    
+   /* ese asignar misiones es muy diferentes al anteriar ya que se el primeor es paar 
+      un solo heroe y pero este nuevo sirve para asignar misiones a diferes heroes 
+    */
+    public void asignarMisionInterfaz(ArrayList<Mision> misiones , ArrayList<Heroe> heroes ){
+        
+        
+        StringBuilder resultado = new StringBuilder();
+        
+        for (Mision m : misiones) {
 
+            boolean asignada = false;
+
+            for (Heroe h : heroes) {
+
+                if (!heroesUsados.contains(h) && h.puedeRealizar(m)) {
+
+                    resultado.append("Misión: ")
+                            .append(m.getNombre())
+                            .append(" -> Asignada a: ")
+                            .append(h.getNombre())
+                            .append("\n");
+
+                    heroesUsados.add(h);
+                    asignada = true;
+                    break;
+                }
+            }
+
+            if (!asignada) {
+                resultado.append("Misión: ")
+                        .append(m.getNombre())
+                        .append(" -> No hay héroe disponible\n");
+            }
+        }
+    
+    
+    }
 }
