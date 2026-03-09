@@ -9,7 +9,7 @@ import misiones.TipoHabilidad;
  * <p>
  * Hulk hereda de la clase {@code Heroe} y posee la habilidad
  * de trepar muros, ya que implementa la interfaz
- * {@code ItreparMuros}.
+ * {@code ITreparMuros}.
  * </p>
  * <p>
  * Esto le permite participar en misiones que requieran
@@ -30,6 +30,17 @@ public class Hulk extends Heroe implements ITreparMuros {
         super(nombre,"Hulk");
     }
 
+    /**
+     * Determina si Hulk puede realizar una misión específica.
+     * <p>
+     * Hulk solo puede participar en misiones que requieran
+     * la habilidad {@code TREPARMUROS}.
+     * </p>
+     *
+     * @param mision misión que se desea evaluar
+     * @return {@code true} si la misión requiere la habilidad de trepar muros,
+     * {@code false} en caso contrario
+     */
     @Override
     public boolean puedeRealizar(Mision mision) {
         return mision.getHabilidadRequerida() == TipoHabilidad.TREPARMUROS;

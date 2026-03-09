@@ -384,11 +384,22 @@ public class InterfazPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_JC_ListadoHeroesActionPerformed
 
-    
-    /*Codiogo Para crear un heroe
-    * y para hace eso solo se nececita el nombre y el tipo de heroe que sera cojido por el
-    * 
-    */
+
+    /**
+     * Evento que se ejecuta al presionar el botón para crear un nuevo héroe.
+     * <p>
+     * Este método obtiene el nombre ingresado en el campo de texto y valida
+     * que no esté vacío ni repetido. Si las validaciones son correctas,
+     * se obtiene el tipo de héroe seleccionado en el {@code JComboBox}
+     * y se crea un nuevo héroe mediante el {@code GestorDeHeroes}.
+     * </p>
+     * <p>
+     * Finalmente, se actualiza el área de texto mostrando la lista
+     * de héroes registrados en el sistema.
+     * </p>
+     *
+     * @param evt evento generado al hacer clic en el botón
+     */
     private void JB_CrearHeroeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_CrearHeroeActionPerformed
          
         // Obtener texto del JTextField
@@ -440,6 +451,21 @@ public class InterfazPrincipal extends javax.swing.JFrame {
         JT_TextoDeMisiones.setText(texto.toString());
     }//GEN-LAST:event_JB_CrearMisonActionPerformed
 
+    /**
+     * Evento que se ejecuta al presionar el botón de ejecutar misión.
+     * <p>
+     * Este método obtiene la lista de misiones y héroes registrados,
+     * y utiliza el sistema de asignación para determinar qué héroe
+     * puede realizar cada misión.
+     * </p>
+     * <p>
+     * El resultado de la asignación se envía como notificación a
+     * través de {@code TelegramNotifier} y también se muestra
+     * en una ventana emergente mediante {@code JOptionPane}.
+     * </p>
+     *
+     * @param evt evento generado al hacer clic en el botón
+     */
     private void JB_EjcutarMisonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_EjcutarMisonActionPerformed
 
         String mesaje = this.asignacion.asignarMisionInterfaz(gestorMision.getMisiones(), gestorHeroe.getHeroes());

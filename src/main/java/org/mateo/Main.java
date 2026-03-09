@@ -31,68 +31,31 @@ public class Main {
 
     /**
      * Método principal que inicia la ejecución del programa.
+     * <p>
+     * Este método crea la pantalla inicial del sistema
+     * {@link PantallaInicio} y la muestra al usuario.
+     * </p>
+     * <p>
+     * Desde esta pantalla se puede acceder a la interfaz principal
+     * del sistema para gestionar los héroes y las misiones.
+     * </p>
      *
      * @param args argumentos de línea de comandos (no utilizados)
      */
     public static void main(String[] args) {
-     
-        
-     /*
-      *
-        SistemaAsignacion sistema = new SistemaAsignacion();
 
-        // =========================
-        // CREACIÓN DE HÉROES
-        // =========================
-
-        SpiderMan spider = new SpiderMan("spiderman");
-        IronMan ironman = new IronMan("Iron Man");
-        AcuaMan acuaMan = new AcuaMan("Acuaman");
-        Hulk hulk = new Hulk("Hulk");
-        Superman superman = new Superman("Super Man");
-        Thor thor = new Thor("Thor");
-
-        // =========================
-        // CREACIÓN DE MISIONES
-        // =========================
-
-        MisionTreparMuros trepar = new MisionTreparMuros();
-        MisionControlaFuego fuego = new MisionControlaFuego();
-        MisionSigilo sigilo = new MisionSigilo();
-        MisionAcuatica acuatica = new MisionAcuatica();
-        MisionVolar volar = new MisionVolar();
-        TelegramNotifier notifier = new TelegramNotifier();
-
-        // Mensaje simple
-        notifier.enviarMensaje("\nAsignando misiones...\n");
-
-
-        // =========================
-        // ASIGNACIÓN DE MISIONES
-        // =========================
-
-        sistema.asignarMision(ironman, trepar);
-        sistema.asignarMision(spider, trepar);
-        sistema.asignarMision(ironman, fuego);
-        sistema.asignarMision(thor, sigilo);
-        sistema.asignarMision(thor, volar);
-        sistema.asignarMision(hulk, trepar);
-        sistema.asignarMision(acuaMan, acuatica);
-        sistema.asignarMision(superman, volar);
-        sistema.asignarMision(superman, acuatica);
-
-        */
-     
-     
+        // Creación de la pantalla inicial del sistema
         PantallaInicio inter = new PantallaInicio();
-        
+
+        // Asigna el título de la ventana
         inter.setTitle("Avengers");
 
-
+        // Centra la ventana en la pantalla
         inter.setLocationRelativeTo(null);
+
+        // Hace visible la interfaz gráfica
         inter.setVisible(true);
-     
-     
+
     }
 
 }

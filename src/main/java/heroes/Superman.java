@@ -29,6 +29,17 @@ public class SuperMan extends Heroe implements ISigilo {
         super(nombre,"Superman");
     }
 
+    /**
+     * Determina si Superman puede realizar una misión específica.
+     * <p>
+     * Superman solo puede participar en misiones que requieran
+     * la habilidad {@code SIGILO}.
+     * </p>
+     *
+     * @param mision misión que se desea evaluar
+     * @return {@code true} si la misión requiere sigilo,
+     * {@code false} en caso contrario
+     */
     @Override
     public boolean puedeRealizar(Mision mision) {
         return mision.getHabilidadRequerida() == TipoHabilidad.SIGILO;

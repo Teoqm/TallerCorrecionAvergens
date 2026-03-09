@@ -29,6 +29,17 @@ public class SpiderMan extends Heroe implements ITreparMuros {
         super(nombre,"SpiderMan");
     }
 
+    /**
+     * Determina si SpiderMan puede realizar una misión específica.
+     * <p>
+     * SpiderMan solo puede participar en misiones que requieran
+     * la habilidad {@code TREPARMUROS}.
+     * </p>
+     *
+     * @param mision misión que se desea evaluar
+     * @return {@code true} si la misión requiere trepar muros,
+     * {@code false} en caso contrario
+     */
     @Override
     public boolean puedeRealizar(Mision mision) {
         return mision.getHabilidadRequerida() == TipoHabilidad.TREPARMUROS;
