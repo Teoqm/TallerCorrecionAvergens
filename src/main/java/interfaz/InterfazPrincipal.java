@@ -4,6 +4,7 @@
  */
 package interfaz;
 
+import avengers.SistemaAsignacion;
 import heroes.AcuaMan;
 import heroes.Heroe;
 import heroes.Hulk;
@@ -11,6 +12,7 @@ import heroes.IronMan;
 import heroes.SpiderMan;
 import heroes.SuperMan;
 import heroes.Thor;
+import java.awt.Color;
 import misiones.Mision;
 
 import java.util.ArrayList;
@@ -24,7 +26,7 @@ public class InterfazPrincipal extends javax.swing.JFrame {
     
     private GestorDeMisiones gestorMision=new GestorDeMisiones(); 
     private GestorDeHeroes gestorHeroe = new GestorDeHeroes();
-    
+    private SistemaAsignacion asignacion = new SistemaAsignacion();
    /*
     Se crea los Jpanel y mas herramientas que ayudan al trabajo 
     */
@@ -104,6 +106,14 @@ public class InterfazPrincipal extends javax.swing.JFrame {
         JB_CrearMison.setBackground(new java.awt.Color(153, 153, 153));
         JB_CrearMison.setForeground(new java.awt.Color(255, 255, 255));
         JB_CrearMison.setText("Crea Mision");
+        JB_CrearMison.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                JB_CrearMisonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                JB_CrearMisonMouseExited(evt);
+            }
+        });
         JB_CrearMison.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JB_CrearMisonActionPerformed(evt);
@@ -228,6 +238,14 @@ public class InterfazPrincipal extends javax.swing.JFrame {
         JB_CrearHeroe.setBackground(new java.awt.Color(153, 153, 153));
         JB_CrearHeroe.setForeground(new java.awt.Color(255, 255, 255));
         JB_CrearHeroe.setText("Crea Heroe");
+        JB_CrearHeroe.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                JB_CrearHeroeMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                JB_CrearHeroeMouseExited(evt);
+            }
+        });
         JB_CrearHeroe.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JB_CrearHeroeActionPerformed(evt);
@@ -293,6 +311,14 @@ public class InterfazPrincipal extends javax.swing.JFrame {
         JB_EjcutarMison.setBackground(new java.awt.Color(153, 153, 153));
         JB_EjcutarMison.setForeground(new java.awt.Color(255, 255, 255));
         JB_EjcutarMison.setText("COMENZAR MISION");
+        JB_EjcutarMison.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                JB_EjcutarMisonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                JB_EjcutarMisonMouseExited(evt);
+            }
+        });
         JB_EjcutarMison.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JB_EjcutarMisonActionPerformed(evt);
@@ -409,41 +435,49 @@ public class InterfazPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_JB_CrearMisonActionPerformed
 
     private void JB_EjcutarMisonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JB_EjcutarMisonActionPerformed
-        // TODO add your handling code here:
 
-        StringBuilder resultado = new StringBuilder();
-        ArrayList<Heroe> heroesUsados = new ArrayList<>();
-        //lisata de msioens
-        for (Mision m : gestorMision.getMisiones()) {
-
-            boolean asignada = false;
-
-            for (Heroe h : gestorHeroe.getHeroes()) {
-
-                if (!heroesUsados.contains(h) && h.puedeRealizar(m)) {
-
-                    resultado.append("Misión: ")
-                            .append(m.getNombre())
-                            .append(" -> Asignada a: ")
-                            .append(h.getNombre())
-                            .append("\n");
-
-                    heroesUsados.add(h);
-                    asignada = true;
-                    break;
-                }
-            }
-
-            if (!asignada) {
-                resultado.append("Misión: ")
-                        .append(m.getNombre())
-                        .append(" -> No hay héroe disponible\n");
-            }
-        }
-
-        JT_TextoDeMisiones.append("\n----- RESULTADO DE EJECUCIÓN -----\n");
-        JT_TextoDeMisiones.append(resultado.toString());
+        String mesaje = this.asignacion.asignarMisionInterfaz(gestorMision.getMisiones(), gestorHeroe.getHeroes());
+        JOptionPane.showMessageDialog(this, "\n----- RESULTADO DE EJECUCIÓN -----\n" + mesaje);
+        
     }//GEN-LAST:event_JB_EjcutarMisonActionPerformed
+
+    private void JB_CrearHeroeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JB_CrearHeroeMouseEntered
+        // Cambiar color del botón cuando el mouse está encima
+        JB_CrearHeroe.setBackground(new Color(255,255,255));
+        JB_CrearHeroe.setForeground(Color.GRAY);
+    }//GEN-LAST:event_JB_CrearHeroeMouseEntered
+
+    private void JB_CrearHeroeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JB_CrearHeroeMouseExited
+        
+        // Regresar al color original
+        JB_CrearHeroe.setBackground(new Color(153,153,153));
+        JB_CrearHeroe.setForeground(new Color(255,255,255));
+    }//GEN-LAST:event_JB_CrearHeroeMouseExited
+
+    private void JB_CrearMisonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JB_CrearMisonMouseEntered
+        // Cambiar color del botón cuando el mouse está encima
+        JB_CrearMison.setBackground(new Color(255,255,255));
+        JB_CrearMison.setForeground(Color.GRAY);
+    }//GEN-LAST:event_JB_CrearMisonMouseEntered
+
+    private void JB_CrearMisonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JB_CrearMisonMouseExited
+        // Regresar al color original
+        JB_CrearMison.setBackground(new Color(153,153,153));
+        JB_CrearMison.setForeground(new Color(255,255,255));
+    }//GEN-LAST:event_JB_CrearMisonMouseExited
+
+    private void JB_EjcutarMisonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JB_EjcutarMisonMouseEntered
+        
+        // Cambiar color del botón cuando el mouse está encima
+        JB_EjcutarMison.setBackground(new Color(255,255,255));
+        JB_EjcutarMison.setForeground(Color.GRAY);
+    }//GEN-LAST:event_JB_EjcutarMisonMouseEntered
+
+    private void JB_EjcutarMisonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JB_EjcutarMisonMouseExited
+        // Regresar al color original
+        JB_EjcutarMison.setBackground(new Color(153,153,153));
+        JB_EjcutarMison.setForeground(new Color(255,255,255));
+    }//GEN-LAST:event_JB_EjcutarMisonMouseExited
 
     //////////////coidgo
     

@@ -61,7 +61,7 @@ public class SistemaAsignacion {
    /* ese asignar misiones es muy diferentes al anteriar ya que se el primeor es paar 
       un solo heroe y pero este nuevo sirve para asignar misiones a diferes heroes 
     */
-    public void asignarMisionInterfaz(ArrayList<Mision> misiones , ArrayList<Heroe> heroes ){
+    public String asignarMisionInterfaz(ArrayList<Mision> misiones , ArrayList<Heroe> heroes ){
         
         
         StringBuilder resultado = new StringBuilder();
@@ -74,7 +74,7 @@ public class SistemaAsignacion {
 
                 if (!heroesUsados.contains(h) && h.puedeRealizar(m)) {
 
-                    resultado.append("Misión: ")
+                    resultado.append("      Misión: ")
                             .append(m.getNombre())
                             .append(" -> Asignada a: ")
                             .append(h.getNombre())
@@ -89,10 +89,10 @@ public class SistemaAsignacion {
             if (!asignada) {
                 resultado.append("Misión: ")
                         .append(m.getNombre())
-                        .append(" -> No hay héroe disponible\n");
+                        .append(" -> No hay héroe dispo3nible\n");
             }
         }
     
-    
+        return resultado.toString();
     }
 }
